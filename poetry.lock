@@ -1,0 +1,18 @@
+[[package]]
+name = "pyprobs"
+version = "0.2"
+description = "A module that returns True or False output based on given probability"
+category = "main"
+optional = false
+python-versions = "*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.8"
+content-hash = "9304dbdff1f5cde3327ec31829e4300121579bafaf17cd03c255930441dd9dbf"
+
+[metadata.files]
+pyprobs = [
+    {file = "pyprobs-0.2-py3-none-any.whl", hash = "sha256:312824a3977e6e996b83fd334302a4aeb70e6f2c773ed8350c0a1ada0627a452"},
+    {file = "pyprobs-0.2.tar.gz", hash = "sha256:0919df78a5de7249961cb3b87cf4f10fb175a1d65559cc4c90d4635ebc5ad438"},
+]
