@@ -1,7 +1,7 @@
 from PyProbs import Probability as pr
 import statistics
 
-tries = 10000
+tries = 1000
 
 
 bg = 640000
