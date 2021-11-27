@@ -3,7 +3,7 @@ import statistics
 
 tries = 1000
 
-
+# Prices of black gem, concentrated black gem, and the gear (for repairs or accaccessory)
 bg = 640000
 cbg = 9050000
 loggia_acc = 1500000
@@ -77,6 +77,7 @@ def get_level(acc, i):
   return a_switcher.get(i, f"Invalid Level {i}") if acc else b_switcher.get(i, "Invalid Level")
 
 
+# Function to verify math on union probabilities for success rates on loggia accessories
 def base_prob():
   ctry = 0  
   pri, duo, tri, tet, pen, succ = 0, 0, 0, 0, 0, 0
@@ -108,17 +109,25 @@ def base_prob():
   )
   print(message)
 
+# Helper function to pull number of gems from a smash attempt for accessories
 def smash_acc(level):  
   lv_1 = lg_acc[level]
   gem_1 = lv_1["gem"]    
   return (gem_1[0], gem_1[1])  
   
+# Helper function to pull number of gems from a smash attempt for equipment
 def smash_eq(level):  
   lv_1 = lg_clothes[level]
   gem_1 = lv_1["gem"]    
   return (gem_1[0], gem_1[1])
 
+# Helper function to return cost of gems
+def cost_gems(gems):
+  c_bg = gems["bg"]*bg
+  c_cbg = gems["cbg"]*cbg
+  return c_bg+c_cbg
 
+# Simulates enhancing base -> PRI and returns gem count and repairs
 def base_PRI():
   gems = {"bg": 0, "cbg": 0}
   acc = 1
@@ -143,6 +152,7 @@ def base_PRI():
         succ = True 
   return (gems, acc)
 
+# Simulates enhancing PRI->PEN and returns gem count and repairs. 
 def pri_pen(level):
   gems = {"bg": 0, "cbg": 0}
   acc = 1
@@ -168,6 +178,7 @@ def pri_pen(level):
         succ = True 
   return (gems, acc)
 
+# Simulates enhancing base -> PEN and returns gem count and accessories for fails
 def acc_sim(level):
   gems = {"bg": 0, "cbg": 0}
   acc = 1
@@ -187,13 +198,8 @@ def acc_sim(level):
       if lvl == get_level(True, clvl):
         succ = True 
   return (gems, acc)
-    
 
-def cost_gems(gems):
-  c_bg = gems["bg"]*bg
-  c_cbg = gems["cbg"]*cbg
-  return c_bg+c_cbg
-
+# Simulation loop. Will run tries-number of enhancement cycles from base to specified level until success.
 def base_sim_acc(is_acc, level):
   ctry = 0
   l_bg = []
@@ -232,6 +238,7 @@ def base_sim_acc(is_acc, level):
   )
   print(message)
   return m_cost
+
 
 
 def base_sim():
@@ -274,6 +281,7 @@ def base_sim():
   print(message)
   return m_cost
 
+# WIP function to simulate DUO->TRI to compare cost/profitability enhancing from base or purchasing DUO from CM.
 def duo_sim():
   ctry = 0
   l_gems = []
